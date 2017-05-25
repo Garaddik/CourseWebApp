@@ -11,6 +11,7 @@ import java.util.List;
 import com.course.apputility.AppConstants;
 import com.course.dao.WCourseDAO;
 import com.course.dao.WCourseDAOImpl;
+import com.course.model.Student;
 import com.course.model.University;
 import com.google.gson.Gson;
 
@@ -20,11 +21,11 @@ public class WCourseServiceImpl implements WCourseService {
 
 	@Override
 	public List<University> getUniversities() {
-		
+
 		String response = getHttpResponse();
 		Gson gson = new Gson();
-		University[] univs = (University[]) gson.fromJson(response,University[].class);
-		
+		University[] univs = (University[]) gson.fromJson(response, University[].class);
+
 		return Arrays.asList(univs);
 	}
 
@@ -45,5 +46,12 @@ public class WCourseServiceImpl implements WCourseService {
 			e.printStackTrace();
 		}
 		return result.toString();
+	}
+
+	@Override
+	public Student addStudent(Student student) {
+
+		Student studentResponse = dao.addStudent(student);
+		return studentResponse;
 	}
 }

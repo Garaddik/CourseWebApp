@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.course.model.Course;
 import com.course.model.Student;
 import com.course.model.University;
 import com.course.service.WCourseService;
@@ -48,6 +50,9 @@ public class CourseController {
 	@RequestMapping(value = "/addstudent")
 	public ModelAndView adStudent(@ModelAttribute("student") Student student,Model model, HttpSession session, HttpServletResponse response,
 			HttpServletRequest request) {
+		
+		Student studentResponse = service.addStudent(student);
+		
 		ModelAndView view = new ModelAndView("students","student",new ArrayList<Student>());
 		return view;
 	}
@@ -57,6 +62,17 @@ public class CourseController {
 			HttpServletRequest request) {
 		ModelAndView view = new ModelAndView("students","student",new ArrayList<Student>());
 		return view;
+	}
+	
+	@RequestMapping(value = "/courses")
+	public ModelAndView Courses(@RequestParam("university") String universityName,Model model, HttpSession session, HttpServletResponse response,
+			HttpServletRequest request) {
+	
+		ModelAndView view = new ModelAndView("courses");
+		request.setAttribute("courses",new ArrayList<Course>());
+		request.setAttribute("university", universityName);
+		return view;
+	
 	}
 	
 }

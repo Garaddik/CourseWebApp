@@ -3,10 +3,9 @@ CREATE DATABASE COURSEDB;
 --select database
 USE COURSEDB;
 --Create Course Table
-CREATE TABLE COURSE(code int,title varchar(255),description varchar(255),credits int,university varchar(255),PRIMARY KEY (id));
+CREATE TABLE COURSE(code int,title varchar(255),description varchar(255),credits int,university varchar(255),PRIMARY KEY (code));
 --Create Student
-CREATE TABLE STUDENT(id int,firstName varchar(255),lastName varchar(255),course_code int,PRIMARY KEY (id),
-    FOREIGN KEY (course_code) REFERENCES COURSE(code));
+CREATE TABLE STUDENT(id int,firstName varchar(255),lastName varchar(255),course_code int,PRIMARY KEY (id),FOREIGN KEY (course_code) REFERENCES COURSE(code));
 --Create En
 CREATE TABLE ENROLLMENT(enrollmentId int,course_code int,studentId int,PRIMARY KEY (enrollmentId),FOREIGN KEY (course_code) REFERENCES COURSE(code),FOREIGN KEY (studentId) REFERENCES STUDENT(id));
 

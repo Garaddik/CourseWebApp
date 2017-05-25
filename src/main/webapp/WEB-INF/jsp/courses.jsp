@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>List of Students</title>
+<title>List of Courses</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -94,7 +94,7 @@
 								alt="User Image">
 							</a>
 							<div class="content-profile">
-								<h4 class="media-heading">Student Information</h4>
+								<h4 class="media-heading">Portal</h4>
 								<ul class="icon-list">
 									<!-- <li><a href="logout"> <i
 											class="fa fa-fw ti-shift-right"></i>
@@ -113,7 +113,7 @@
 		<aside class="right-side">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>List of Universities</h1>
+				<h1>${requestScope.university}</h1>
 				<!-- <ol class="breadcrumb">
 					<li><a href="#"> <i class="fa fa-fw ti-home"></i> Home
 					</a></li>
@@ -131,7 +131,7 @@
 							<div class="panel filterable">
 								<div class="panel-heading">
 									<h3 class="panel-title">
-										<i class="ti-move"></i>Universities
+										<i class="ti-move"></i>Course Information
 									</h3>
 								</div>
 								<div class="panel-body">
@@ -140,22 +140,26 @@
 											<thead>
 												<tr>
 													<th>Sl No.</th>
-													<th>First Name</th>
-													<th>Last Name</th>
-													<th>Address</th>
+													<th>Code</th>
+													<th>Title</th>
+													<th>Description</th>
+													<th>Credits</th>
+													
 												</tr>
 											</thead>
 											<tbody>
 												<%
 													int i = 0;
 												%>
-												<c:forEach var="student"
-													items="${requestScope.students}">
+												<c:forEach var="course"
+													items="${requestScope.courses}">
 													<tr>
 														<td><%=++i%></td>
-														<td>${student.firstName}</td>
-														<td>${student.secondName}</td>
-														<td>${student.address}</td>
+														<td>${course.code}</td>
+														<td>
+														<a href="/coursestudents?coursecode=${course.code}">${course.title}</a></td>
+														<td>${course.description}</td>
+														<td>${course.Credits}</td>
 													</tr>
 												</c:forEach>
 											</tbody>

@@ -139,7 +139,7 @@
 										<table class="table table-striped table-bordered" id="table2">
 											<thead>
 												<tr>
-													<th></th>
+													<th>Sl No.</th>
 													<th>Country Code</th>
 													<th>Name</th>
 													<th>country</th>
@@ -156,7 +156,7 @@
 													<tr>
 														<td><%=++i%></td>
 														<td>${university.alpha_two_code}</td>
-														<td><a href="/">${university.name}</a></td>
+														<td><a href="/courses?university=${university.name}">${university.name}</a></td>
 														<td>${university.country}</td>
 														<td>${university.domain}</td>
 														<td><a href="${university.web_page}" target="_blank">${university.web_page}</a></td>
