@@ -4,8 +4,12 @@ import javax.persistence.EntityManagerFactory;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Repository;
 
+@Repository
+@Qualifier("beanConfig")
 public class BeanConfig {
 
 	@Autowired

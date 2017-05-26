@@ -8,16 +8,24 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import com.course.apputility.AppConstants;
 import com.course.dao.WCourseDAO;
-import com.course.dao.WCourseDAOImpl;
 import com.course.model.Student;
 import com.course.model.University;
 import com.google.gson.Gson;
 
+@Component
+@Repository
+@Qualifier("service")
 public class WCourseServiceImpl implements WCourseService {
 
-	WCourseDAO dao = new WCourseDAOImpl();
+	@Autowired
+	WCourseDAO dao ;
 
 	@Override
 	public List<University> getUniversities() {
