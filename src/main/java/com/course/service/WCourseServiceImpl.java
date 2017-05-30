@@ -15,6 +15,8 @@ import org.springframework.stereotype.Repository;
 
 import com.course.apputility.AppConstants;
 import com.course.dao.WCourseDAO;
+import com.course.model.Course;
+import com.course.model.Enrollment;
 import com.course.model.Student;
 import com.course.model.University;
 import com.google.gson.Gson;
@@ -61,5 +63,30 @@ public class WCourseServiceImpl implements WCourseService {
 
 		Student studentResponse = dao.addStudent(student);
 		return studentResponse;
+	}
+
+	@Override
+	public List<Student> getStudents() {
+		List<Student> students = dao.getStudents();
+		return students;
+	}
+
+	@Override
+	public List<Course> getCourses() {
+		List<Course> courses = dao.getCourses();
+		return courses;
+	}
+
+	@Override
+	public Enrollment addEnrollment(Enrollment enrollment) {
+
+		Enrollment enrollmentresponse = dao.addEnrollment(enrollment);
+		return enrollmentresponse;
+	}
+	
+	@Override
+	public List<Enrollment> getCourseEnrollments(int course_code) {
+		List<Enrollment> enrollemts = dao.getCourseEnrollment(course_code);
+		return enrollemts;
 	}
 }
